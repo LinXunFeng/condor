@@ -13,17 +13,18 @@ class Log {
   }
 
   /// Print a message in yellow
-  static warning(String msg) {
+  static void warning(String msg) {
     _log('\x1B[33m$msg\x1B[0m');
   }
 
   /// Print a message in red
-  static error(String msg) {
+  static void error(String msg) {
     _log('\x1B[31m$msg\x1B[0m');
   }
 
   /// Print a message in red and exit
-  static _log(String message) {
+  static void _log(String message) {
+    // ignore: avoid_print
     print(message);
   }
 }
