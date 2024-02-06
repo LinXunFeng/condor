@@ -37,9 +37,9 @@ class InitCommand extends CondorCommand {
 
     final map = <String, dynamic>{
       'symbolZipPath': '',
-      'symbols': '',
+      'symbols': <String>[],
       'version': '',
-      'platform': 'ios', // ios / android
+      'platform': 'IOS', // IOS / Android
       'bugly': {
         'appId': '',
         'appKey': '',

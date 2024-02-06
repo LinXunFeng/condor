@@ -7,7 +7,7 @@ part 'config_model.g.dart';
 @JsonSerializable()
 class Config {
   String symbolZipPath;
-  String symbols;
+  List<String> symbols;
   String version;
   String platform;
   Bugly bugly;

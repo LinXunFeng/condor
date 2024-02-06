@@ -17,16 +17,10 @@ class DoctorCommand extends CondorCommand {
 
   @override
   FutureOr<int>? run() {
-    final javaPath = osInterface.which('java');
-    if (javaPath == null) {
-      Log.error('没有找到java环境，请先安装java环境');
-      return ExitCode.unavailable.code;
-    }
-
     Log.info('''
 ====== Doctor ======
 
-JAVA路径: $javaPath
+Java路径: ${env.javaPath() ?? '没有找到Java环境'}
 
 ====== End ======
 ''');

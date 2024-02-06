@@ -4,11 +4,14 @@ import 'package:meta/meta.dart';
 
 CondorProcess process = CondorProcess();
 
+/// 系统命令执行
 class CondorProcess {
+  /// 构造函数
   CondorProcess({
     ProcessWrapper? processWrapper,
   }) : processWrapper = processWrapper ?? ProcessWrapper();
 
+  /// 包装
   final ProcessWrapper processWrapper;
   Future<CondorProcessResult> run(
     String executable,

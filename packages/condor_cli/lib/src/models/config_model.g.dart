@@ -8,7 +8,8 @@ part of 'config_model.dart';
 
 Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
       symbolZipPath: json['symbolZipPath'] as String,
-      symbols: json['symbols'] as String,
+      symbols:
+          (json['symbols'] as List<dynamic>).map((e) => e as String).toList(),
       version: json['version'] as String,
       platform: json['platform'] as String,
       bugly: Bugly.fromJson(json['bugly'] as Map<String, dynamic>),
