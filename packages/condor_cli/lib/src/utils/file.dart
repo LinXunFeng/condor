@@ -13,4 +13,15 @@ class CondorFile {
   }) {
     return File(p.join(cwd.path, 'config.yaml'));
   }
+
+  /// Condor 的临时目录
+  Directory getCondorTempDir() {
+    final systemTemp = Directory.systemTemp;
+    final tempDirPath = p.join(systemTemp.path, 'condor');
+    final tempDir = Directory(tempDirPath);
+    if (!tempDir.existsSync()) {
+      tempDir.createSync();
+    }
+    return tempDir;
+  }
 }
