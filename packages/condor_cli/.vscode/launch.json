@@ -10,11 +10,19 @@
       "type": "dart",
       "program": "bin/condor.dart",
       "args": [
-        // "init",
-        "doctor",
+        // ====== init ======
+        "init",
+        "-o",
+        "~/Downloads/condor",
+        // "-r",
+        // "~/Downloads/condor/config2.yaml",
+        // ====== upload ======
         // "upload",
         // "-c",
-        "~/Downloads/condor/condor.yaml",
+        // "~/Downloads/condor/config.yaml",
+        // ====== doctor ======
+        // "doctor",
+        // ====== help ======
         // "-h"
       ]
     }
