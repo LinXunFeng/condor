@@ -14,7 +14,12 @@ flutter pub run build_runner build
 dart pub global activate --source path 'xx/xxx/condor/packages/condor_cli'
 ```
 
+## Flutter
+
+- [Flutter.dSYM](https://console.cloud.google.com/storage/browser/flutter_infra_release/flutter/)
+
 ## 镜像
+- [tuna](https://mirrors.tuna.tsinghua.edu.cn/)
 - [SJTUG](https://mirrors.sjtug.sjtu.edu.cn)
 
 ## 工具
