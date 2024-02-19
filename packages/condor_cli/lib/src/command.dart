@@ -12,4 +12,9 @@ abstract class CondorCommand extends Command<int> {
 
   /// 参数解析结果
   ArgResults get results => testArgResults ?? argResults!;
+
+  /// 获取 option 的值
+  String stringOption(String option) {
+    return results.wasParsed(option) ? results[option] as String : '';
+  }
 }

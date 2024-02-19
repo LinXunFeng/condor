@@ -14,7 +14,14 @@ class InitCommand extends CondorCommand {
   InitCommand() {
     argParser
       ..addOption('ref', abbr: 'r', help: '指定固定配置文件的路径')
-      ..addOption('out', abbr: 'o', help: '指定配置文件的输出目录路径');
+      ..addOption('out', abbr: 'o', help: '指定配置文件的输出目录路径')
+      ..addOption('symbolZipPath', help: '符号表压缩包路径')
+      ..addOption('bundleId', help: 'app的bundleId')
+      ..addOption('version', help: 'app的版本号')
+      ..addOption('flutterVersion', help: 'Flutter版本')
+      ..addOption('buglyAppId', help: 'bugly的appid')
+      ..addOption('buglyAppKey', help: 'bugly的appkey')
+      ..addOption('buglyJarPath', help: 'buglyqq-upload-symbol.jar的路径');
   }
 
   @override
@@ -51,18 +58,25 @@ class InitCommand extends CondorCommand {
     }
 
     final map = <String, dynamic>{
-      'symbol_zip_path': '', // 符号号压缩包路径
-      'symbols': <String>[], // 指定仅上传的符号表，不指定则上传所有
-      'bundle_id': '', // app 的 bundleId
-      'version': '', // app的版本号
-      'platform': 'IOS', // IOS / Android
+      // 符号表压缩包路径
+      'symbol_zip_path': stringOption('symbolZipPath'),
+      // 指定仅上传的符号表，不指定则上传所有
+      'symbols': <String>[],
+      // app 的 bundleId
+      'bundle_id': stringOption('bundleId'),
+      // app 的版本号
+      'version': stringOption('version'),
+      // IOS / Android
+      'platform': 'IOS',
       'flutter': {
-        'version': '', // Flutter 版本
+        // Flutter 版本
+        'version': stringOption('flutterVersion'),
       },
       'bugly': {
-        'app_id': '',
-        'app_key': '',
-        'jar_path': '', // 符号表上传工具中的buglyqq-upload-symbol.jar路径
+        'app_id': stringOption('buglyAppId'),
+        'app_key': stringOption('buglyAppKey'),
+        // 符号表上传工具中的buglyqq-upload-symbol.jar路径
+        'jar_path': stringOption('buglyJarPath'),
       },
     }..addAll(refMap);
     // 转模型时用得到

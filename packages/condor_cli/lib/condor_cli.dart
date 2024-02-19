@@ -1,5 +1,5 @@
 /// ```sh
-/// # Activate mason
+/// # Activate condor
 /// dart pub global activate condor_cli
 ///
 /// # See usage
