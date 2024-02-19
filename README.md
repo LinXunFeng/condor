@@ -9,7 +9,7 @@ brew tap LinXunFeng/tap && brew install condor
 ### Pub Global
 
 ```shell
-dart pub global activate condor
+dart pub global activate condor_cli
 ```
 
 ## 使用
