@@ -11,9 +11,9 @@
       "program": "bin/condor.dart",
       "args": [
         // ====== init ======
-        "init",
-        "-o",
-        "~/Downloads/condor",
+        // "init",
+        // "-o",
+        // "~/Downloads/condor",
         // "-r",
         // "~/Downloads/condor/config2.yaml",
         // ====== upload ======
@@ -24,6 +24,13 @@
         // "doctor",
         // ====== help ======
         // "-h"
+        // ====== flutter ======
+        "flutter",
+        "version",
+        "print",
+        // "-h",
+        // "-f",
+        // "fvm spawn 3.16.0",
       ]
     }
   ]
