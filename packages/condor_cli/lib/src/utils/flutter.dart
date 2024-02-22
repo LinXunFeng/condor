@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:condor_cli/src/common.dart';
 import 'package:condor_cli/src/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
@@ -10,6 +11,24 @@ CondorFlutter flutter = CondorFlutter();
 
 /// Flutter 管理
 class CondorFlutter {
+  /// 获取 Flutter 版本
+  Future<String?> frameworkVersion({
+    String? flutterProcess,
+    List<String> arguments = const <String>[],
+  }) async {
+    final result = process.runSync(
+      flutterProcess ?? 'flutter',
+      arguments + ['--version'],
+    );
+    if (result.exitCode != ExitCode.success.code) {
+      return null;
+    }
+    final output = (result.stdout as String?)?.trim() ?? '';
+    final flutterVersionRegex = RegExp(r'Flutter (\d+.\d+.\d+)');
+    final match = flutterVersionRegex.firstMatch(output);
+    return match?.group(1);
+  }
+
   /// 拉取引擎dSYM
   Future<File?> fetchEngineDsymZipFile({
     required String flutterVersion,
