@@ -1,6 +1,7 @@
 import 'package:condor_cli/src/commands/doctor.dart';
 import 'package:condor_cli/src/commands/flutter/flutter.dart';
 import 'package:condor_cli/src/commands/init.dart';
+import 'package:condor_cli/src/commands/optimize_build/optimize_build.dart';
 import 'package:condor_cli/src/commands/upload.dart';
 import 'package:condor_cli/src/common.dart';
 import 'package:condor_cli/src/utils/utils.dart';
@@ -23,6 +24,7 @@ class CondorCommandRunner extends CompletionCommandRunner<int> {
     addCommand(DoctorCommand());
     addCommand(UploadCommand());
     addCommand(FlutterCommand());
+    addCommand(OptimizeBuildCommand());
   }
 
   @override

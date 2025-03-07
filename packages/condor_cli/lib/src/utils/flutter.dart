@@ -120,4 +120,31 @@ class CondorFlutter {
     );
     return File(dsymPath);
   }
+
+  /// 获取 Flutter 的 SDK 路径
+  String? sdkPath(String? flutterCmd) {
+    var flutterCmdStr = (flutterCmd ?? '').trim();
+    if (flutterCmdStr.isEmpty) {
+      flutterCmdStr = osInterface.which('flutter') ?? '';
+    }
+    if (flutterCmdStr.isEmpty) {
+      return null;
+    }
+    if (flutterCmdStr.startsWith('fvm')) {
+      // fvm spawn 3.24.5
+      final version = flutterCmdStr.split(' ').last;
+      final fvmDirPath = osInterface.absolute('~/fvm');
+      return p.join(fvmDirPath, 'versions', version);
+    } else {
+      // /Users/lxf/fvm/default/bin/flutter
+      final flutterPath = osInterface.which(flutterCmdStr);
+      if (flutterPath == null) {
+        return null;
+      }
+      // /Users/lxf/fvm/default
+      final dirPath = File(flutterPath).parent.parent.path;
+      // default 是替身，需要获取软链接的真实路径
+      return Directory(dirPath).resolveSymbolicLinksSync();
+    }
+  }
 }
