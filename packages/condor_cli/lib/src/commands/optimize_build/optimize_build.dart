@@ -69,7 +69,12 @@ class OptimizeBuildCommand extends CondorCommand {
       return ExitCode.config.code;
     }
 
+    final projectPath = findProjectPath();
     // 执行 rugby 命令
+    final iosPath = path.join(
+      projectPath,
+      'ios',
+    );
     final rugbyProcess = await process.start(
       'rugby',
       [
@@ -78,6 +83,7 @@ class OptimizeBuildCommand extends CondorCommand {
         '-p',
         config,
       ],
+      workingDirectory: iosPath,
     );
 
     // 实时输出 stdout
@@ -102,7 +108,6 @@ class OptimizeBuildCommand extends CondorCommand {
     Log.success('优化编译完成');
 
     // 伪造 pod_inputs.fingerprint
-    final projectPath = findProjectPath();
     // pod_inputs.fingerprint 路径
     final podInputsFingerprintPath = path.join(
       projectPath,
@@ -126,8 +131,7 @@ class OptimizeBuildCommand extends CondorCommand {
   /// 查找项目的根路径
   String findProjectPath() {
     // 获取当前路径
-    String currentPath = Directory.current.path;
-    return Directory(currentPath).parent.path;
+    return Directory.current.path;
   }
 
   /// 计算文件的 MD5

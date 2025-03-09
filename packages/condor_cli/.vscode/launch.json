@@ -8,7 +8,7 @@
       "name": "condor",
       "request": "launch",
       "type": "dart",
-      "program": "bin/condor.dart",
+      "program": "${workspaceFolder}/bin/condor.dart",
       "args": [
         // ====== init ======
         // "init",
@@ -23,7 +23,7 @@
         // ====== doctor ======
         // "doctor",
         // ====== help ======
-        // "-h"
+        // "-h",
         // ====== flutter ======
         "flutter",
         "version",
@@ -31,6 +31,12 @@
         // "-h",
         // "-f",
         // "fvm spawn 3.16.0",
+        // ====== optimize-build ======
+        // "optimize-build",
+        // "--flutter",
+        // "fvm spawn 3.24.5",
+        // "--config",
+        // "path/to/rugby/plans.yml",
       ]
     }
   ]

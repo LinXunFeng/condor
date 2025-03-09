@@ -50,12 +50,14 @@ class CondorProcess {
     List<String> arguments, {
     bool runInShell = false,
     Map<String, String>? environment,
+    String? workingDirectory,
   }) {
     return processWrapper.start(
       executable,
       arguments,
       runInShell: runInShell,
       environment: environment,
+      workingDirectory: workingDirectory,
     );
   }
 }
@@ -121,12 +123,14 @@ class ProcessWrapper {
     List<String> arguments, {
     bool runInShell = false,
     Map<String, String>? environment,
+    String? workingDirectory,
   }) {
     return Process.start(
       executable,
       arguments,
       runInShell: runInShell,
       environment: environment,
+      workingDirectory: workingDirectory,
     );
   }
 }
