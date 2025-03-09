@@ -108,5 +108,17 @@ condor optimize-build --config path/to/rugby/plans.yml
 指定 `flutter` 版本
 
 ```shell
-condor optimize-build --config path/to/rugby/plans.yml --flutter "fvm spawn 3.24.5"
+condor optimize-build \
+  --config path/to/rugby/plans.yml \
+  --flutter "fvm spawn 3.24.5"
+```
+
+指定编译模式
+
+通过 `--mode` 指定，或者设置环境变量 `export CONDOR_BUILD_MODE=release`
+
+```shell
+condor optimize-build \
+  --config path/to/rugby/plans.yml \
+  --mode release
 ```

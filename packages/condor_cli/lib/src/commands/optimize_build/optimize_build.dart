@@ -20,6 +20,11 @@ class OptimizeBuildCommand extends CondorCommand {
         help: 'flutter 命令 (如: flutter 或者 fvm spawn 3.24.5)',
       )
       ..addOption(
+        'mode',
+        abbr: 'm',
+        help: '编译模式 (如: profile 或者 release)',
+      )
+      ..addOption(
         'config',
         abbr: 'c',
         help: '配置文件路径',
@@ -38,6 +43,9 @@ class OptimizeBuildCommand extends CondorCommand {
   /// 配置文件路径
   String get config => stringOption('config');
 
+  /// 编译模式
+  String get mode => stringOption('mode');
+
   @override
   FutureOr<int>? run() async {
     // 获取配置文件路径
@@ -53,10 +61,13 @@ class OptimizeBuildCommand extends CondorCommand {
       return ExitCode.software.code;
     }
 
-    // 取出环境变量 CONDOR_BUILD_MODE
-    final buildMode = Platform.environment['CONDOR_BUILD_MODE'];
-    if (buildMode == null) {
-      Log.error('未设置 CONDOR_BUILD_MODE 环境变量');
+    var buildMode = mode;
+    if (buildMode.isEmpty) {
+      // 取出环境变量 CONDOR_BUILD_MODE
+      buildMode = Platform.environment['CONDOR_BUILD_MODE'] ?? '';
+    }
+    if (buildMode.isEmpty) {
+      Log.error('未设置 CONDOR_BUILD_MODE 环境变量，也未指定编译模式');
       return ExitCode.config.code;
     }
 
