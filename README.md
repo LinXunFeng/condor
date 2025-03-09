@@ -14,7 +14,13 @@ dart pub global activate condor_cli
 
 ## 使用
 
-### 初始化
+### 符号表
+
+<details>
+
+<summary>符号表配置初始化与上传</summary>
+
+#### 初始化
 
 输出配置文件到指定目录
 
@@ -40,7 +46,8 @@ condor init -o ~/Downloads/condor -r ~/Downloads/condor/config2.yaml
 |`buglyAppKey`|-|`bugly` 的 `appkey`|
 |`buglyJarPath`|-|`buglyqq-upload-symbol.jar` 的路径|
 
-### 上传符号表
+
+#### 上传符号表
 
 > 针对 `fastlane` 打出来的符号表压缩包
 
@@ -49,6 +56,8 @@ condor init -o ~/Downloads/condor -r ~/Downloads/condor/config2.yaml
 ```shell
 condor upload -c ~/Downloads/condor/config.yaml
 ```
+
+</details>
 
 ### Flutter
 
@@ -74,4 +83,30 @@ condor flutter version print -f 'fvm spawn 3.7.12'
 environment {
   FLUTTER_VERSION = sh(script: "condor flutter version print -f 'fvm spawn ${flutter_version}'", returnStdout: true).trim()
 }
+```
+
+### 优化 `Flutter` 项目 `ios` 端的编译速度
+
+依赖 [Rugby](https://github.com/swiftyfinch/Rugby) 实现，所以需要先安装 `Rugby`
+
+```shell
+curl -Ls https://swiftyfinch.github.io/rugby/install.sh | bash
+```
+
+在你的终端配置(如: `~/.zshrc`)中添加如下配置
+
+```shell
+export PATH=$PATH:~/.rugby/clt
+```
+
+在 `pod install` 完成后执行如下命令进行优化
+
+```shell
+condor optimize-build --config path/to/rugby/plans.yml
+```
+
+指定 `flutter` 版本
+
+```shell
+condor optimize-build --config path/to/rugby/plans.yml --flutter "fvm spawn 3.24.5"
 ```

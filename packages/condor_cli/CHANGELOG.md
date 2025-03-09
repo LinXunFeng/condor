@@ -1,3 +1,6 @@
+## 0.0.4
+- 新增 `optimize-build`，用于优化 `Flutter` 项目 `ios` 端的构建速度
+
 ## 0.0.3
 - 新增 `flutter` 命令，用于输出当前的 `flutter` 版本
 
