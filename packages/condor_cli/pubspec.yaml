@@ -1,6 +1,6 @@
 name: condor_cli
-description: 符号表上传辅助工具CLI.
-version: 0.0.4
+description: LinXunFeng的脚本工具集.
+version: 0.0.5
 repository: https://github.com/LinXunFeng/condor
 
 environment:

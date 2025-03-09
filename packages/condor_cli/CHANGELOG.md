@@ -1,3 +1,6 @@
+## 0.0.5
+-  `optimize-build`: 新增 `mode` 参数，用于指定编译模式
+
 ## 0.0.4
 - 新增 `optimize-build`，用于优化 `Flutter` 项目 `ios` 端的构建速度
 
