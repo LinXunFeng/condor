@@ -1,3 +1,4 @@
+import 'package:condor_cli/src/commands/copilot/copilot.dart';
 import 'package:condor_cli/src/commands/doctor.dart';
 import 'package:condor_cli/src/commands/flutter/flutter.dart';
 import 'package:condor_cli/src/commands/init.dart';
@@ -13,7 +14,7 @@ const packageName = 'condor_cli';
 const executableName = 'condor';
 
 /// 该CLI的描述
-const description = 'condor让你轻松上传符号表';
+const description = 'LinXunFeng的脚本工具集';
 
 /// condor命令行运行器
 class CondorCommandRunner extends CompletionCommandRunner<int> {
@@ -25,6 +26,7 @@ class CondorCommandRunner extends CompletionCommandRunner<int> {
     addCommand(UploadCommand());
     addCommand(FlutterCommand());
     addCommand(OptimizeBuildCommand());
+    addCommand(CopilotCommand());
   }
 
   @override

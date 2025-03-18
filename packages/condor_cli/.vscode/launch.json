@@ -10,6 +10,9 @@
       "type": "dart",
       "program": "${workspaceFolder}/bin/condor.dart",
       "args": [
+        // ====== optimize-build ======
+        "copilot",
+        "freedom",
         // ====== init ======
         // "init",
         // "-o",
@@ -25,9 +28,9 @@
         // ====== help ======
         // "-h",
         // ====== flutter ======
-        "flutter",
-        "version",
-        "print",
+        // "flutter",
+        // "version",
+        // "print",
         // "-h",
         // "-f",
         // "fvm spawn 3.16.0",

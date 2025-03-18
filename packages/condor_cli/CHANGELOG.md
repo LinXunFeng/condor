@@ -1,3 +1,6 @@
+## 0.0.6
+- 新增 `copilot freedom` 命令，用于解除 `copilot` 的模型使用限制
+
 ## 0.0.5
 -  `optimize-build`: 新增 `mode` 参数，用于指定编译模式
 
