@@ -21,6 +21,26 @@ dart pub global activate condor_cli
 
 ## 使用
 
+### Copilot - 解除限制
+
+在 `Cline` 和 `RooCode` 中使用 `VS Code LM API` + `copilot - claude-3.7.sonnet` 时，会出现如下错误
+
+```
+Request Failed: 400 {"error":{"message":"Model is not supported for this request.","param":"model","code":"model_not_supported","type":"invalid_request_error"}}
+
+Retry attempt 1
+Retrying in 5 seconds...
+```
+
+限制的情况，此时可以通过 `condor` 来解除限制
+
+```shell
+condor copilot freedom
+```
+
+杀掉并重启 `VS Code` 即可
+
+
 ### 符号表
 
 <details>
