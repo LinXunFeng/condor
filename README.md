@@ -1,3 +1,9 @@
+## ☕ 请我喝一杯咖啡
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T4JKVRP) [![wechat](https://img.shields.io/static/v1?label=WeChat&message=微信收款码&color=brightgreen&style=for-the-badge&logo=WeChat)](https://cdn.jsdelivr.net/gh/FullStackAction/PicBed@resource20220417121922/image/202303181116760.jpeg)
+
+微信技术交流群请看: [【微信群说明】](https://mp.weixin.qq.com/s/JBbMstn0qW6M71hh-BRKzw)
+
 ## 安装
 
 <!-- ### Homebrew -->
@@ -22,6 +28,8 @@ dart pub global activate condor_cli
 ## 使用
 
 ### Copilot - 解除限制
+
+> 文章：[AI - RooCode 解限使用 Copilot Claude 3.7](https://mp.weixin.qq.com/s/MPgDkJ37s9X7DzAvS4azwQ)
 
 在 `Cline` 和 `RooCode` 中使用 `VS Code LM API` + `copilot - claude-3.7.sonnet` 时，会出现如下错误
 
@@ -113,6 +121,8 @@ environment {
 ```
 
 ### 优化 `Flutter` 项目 `ios` 端的编译速度
+
+> 文章：[Flutter - iOS编译加速](https://mp.weixin.qq.com/s/iyvoAMCvC8WKN-zWsQcU_w)
 
 依赖 [Rugby](https://github.com/swiftyfinch/Rugby) 实现，所以需要先安装 `Rugby`
 
