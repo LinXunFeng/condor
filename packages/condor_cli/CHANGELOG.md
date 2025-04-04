@@ -1,3 +1,6 @@
+## 0.1.1
+- 调整 `optimize-build redirect-cc` 子命令查找 `_run` 方法结束行的逻辑
+
 ## 0.1.0
 - `optimize-build`
   - 新增 `xctoolchain-copy`，用于复制 `Xcode` 工具链
