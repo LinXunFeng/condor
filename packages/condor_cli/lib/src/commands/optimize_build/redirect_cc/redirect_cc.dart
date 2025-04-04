@@ -112,8 +112,7 @@ class OptimizeBuildRedirectCCCommand extends CondorCommand {
       );
     });
     return _run('cc', args, environment: environment);
-  }
-""",
+  }""",
     );
 
     // 注释掉原来的 _run 方法
@@ -124,20 +123,36 @@ class OptimizeBuildRedirectCCCommand extends CondorCommand {
       Log.error('没有找到 _run 方法');
       return ExitCode.usage.code;
     }
-    // Comment out original _run method instead of removing it
-    for (var i = runLineIndex; i < runLineIndex + 3; i++) {
-      if (i < xcodeDartLines.length) {
+    // 查找原始 _run 方法的结束位置
+    final result = code.findMethodEndLine(
+      xcodeDartLines,
+      runLineIndex,
+    );
+
+    if (!result.found) {
+      Log.error('无法准确找到 _run 方法的结束括号');
+      return ExitCode.usage.code;
+    }
+
+    final endLineIndex = result.endLineIndex;
+    // 从开始到结束注释掉原始 _run 方法
+    for (var i = runLineIndex; i <= endLineIndex; i++) {
+      // 检查边界，以防循环逻辑有问题
+      if (i >= 0 && i < xcodeDartLines.length) {
         xcodeDartLines[i] = '// ${xcodeDartLines[i]}';
       }
     }
     // 添加新的 _run 方法
     xcodeDartLines.insert(
-      runLineIndex + 4,
+      endLineIndex + 1,
       '''
   Future<RunResult> _run(String command, List<String> args, {Map<String, String>? environment}) {
-    return _processUtils.run(<String>[...xcrunCommand(), command, ...args], throwOnError: true, environment: environment);
-  }
-''',
+    return _processUtils.run(
+      <String>[...xcrunCommand(), command, ...args],
+      throwOnError: true,
+      environment: environment,
+    );
+  }''',
     );
 
     // 写入文件

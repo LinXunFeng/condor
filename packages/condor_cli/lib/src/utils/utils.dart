@@ -1,4 +1,5 @@
 export 'bugly.dart';
+export 'code.dart';
 export 'env.dart';
 export 'file.dart';
 export 'flutter.dart';
