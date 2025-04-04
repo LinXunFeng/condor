@@ -12,6 +12,29 @@ CondorFlutter flutter = CondorFlutter();
 /// Flutter 管理
 class CondorFlutter {
   /// 获取 Flutter 版本
+  Future<String?> version(
+    String? flutterCmd,
+  ) {
+    String? flutterProcess;
+    var arguments = <String>[];
+    final cmd = (flutterCmd ?? '').trim();
+    if (cmd.isNotEmpty) {
+      final values = cmd.split(' ')
+        ..removeWhere((element) => element.isEmpty);
+      if (values.isNotEmpty) {
+        flutterProcess = values.first;
+        if (values.length > 1) {
+          arguments = values.sublist(1);
+        }
+      }
+    }
+    return frameworkVersion(
+      flutterProcess: flutterProcess,
+      arguments: arguments,
+    );
+  }
+
+  /// 获取 Flutter 版本
   Future<String?> frameworkVersion({
     String? flutterProcess,
     List<String> arguments = const <String>[],
@@ -122,6 +145,8 @@ class CondorFlutter {
   }
 
   /// 获取 Flutter 的 SDK 路径
+  ///
+  /// 如: /Users/lxf/fvm/versions/3.29.0
   String? sdkPath(String? flutterCmd) {
     var flutterCmdStr = (flutterCmd ?? '').trim();
     if (flutterCmdStr.isEmpty) {
@@ -146,5 +171,41 @@ class CondorFlutter {
       // default 是替身，需要获取软链接的真实路径
       return Directory(dirPath).resolveSymbolicLinksSync();
     }
+  }
+
+  /// 删除缓存（snapshot、stamp）
+  ///
+  /// [flutterCmd]: flutter 命令
+  /// [packageName]: 包名（如: flutter_tool）
+  bool removeCache(
+    String? flutterCmd, {
+    required String packageName,
+  }) {
+    if (packageName.isEmpty) {
+      Log.error('包名不能为空');
+      return false;
+    }
+    final flutterSDKPath = sdkPath(flutterCmd);
+    if (flutterSDKPath == null) {
+      Log.error('无法获取 Flutter SDK 路径');
+      return false;
+    }
+    final cacheDirPath = p.join(
+      flutterSDKPath,
+      'bin',
+      'cache',
+    );
+    final cacheSuffixes = [
+      'snapshot',
+      'stamp',
+    ];
+    for (final suffix in cacheSuffixes) {
+      final path = p.join(cacheDirPath, '$packageName.$suffix');
+      final file = File(path);
+      if (file.existsSync()) {
+        file.deleteSync();
+      }
+    }
+    return true;
   }
 }

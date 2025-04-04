@@ -159,3 +159,33 @@ condor optimize-build \
   --config path/to/rugby/plans.yml \
   --mode release
 ```
+
+### 使用 `Xcode 15` 的工具链优化 `Xcode 16` 的编译
+
+请先安装 `Xcode 16` 以下的版本，如: `Xcode 15.4.0`，建议使用 [XcodesApp](https://github.com/XcodesOrg/XcodesApp) 进行安装
+
+安装完成后，把对应的 `Xcode` 名字记下，如 `/Applications/Xcode-15.4.0.app`，则取 `Xcode-15.4.0`，给下面的命令使用。
+
+#### 拷贝 `xctoolchain`
+
+```shell
+condor optimize-build xctoolchain-copy --xcode Xcode-15.4.0
+```
+
+#### 重定向 `cc`
+
+这一步只是使 `flutter build` 具备重定向 `cc` 的能力而已，在有配置 `CONDOR_TOOLCHAINS` 环境变量时才会生效，否则则使用默认的 `cc`。
+
+```shell
+# 使用默认 flutter，则不需要传 flutter 参数
+condor optimize-build redirect-cc
+
+# 如果你想指定 fvm 下的指定 Flutter 版本
+condor optimize-build redirect-cc --flutter fvm spawn 3.24.5
+```
+
+设置环境变量 `CONDOR_TOOLCHAINS`，值为上述的 `Xcode` 名。
+
+```shell
+export CONDOR_TOOLCHAINS=Xcode-15.4.0
+```

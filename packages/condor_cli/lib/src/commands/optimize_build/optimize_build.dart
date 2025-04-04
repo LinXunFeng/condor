@@ -3,16 +3,26 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:condor_cli/src/command.dart';
+import 'package:condor_cli/src/commands/optimize_build/redirect_cc/redirect_cc.dart';
+import 'package:condor_cli/src/commands/optimize_build/xctoolchain_copy/xctoolchain_copy.dart';
 import 'package:condor_cli/src/common.dart';
 import 'package:condor_cli/src/utils/utils.dart';
 import 'package:crypto/crypto.dart';
 import 'package:path/path.dart' as path;
 
 /// Flutter 优化编译
+///
 /// 请在 flutter_project/ios 目录下执行
 class OptimizeBuildCommand extends CondorCommand {
   /// Flutter 优化编译
   OptimizeBuildCommand() {
+
+    // 以下两个子命令，用于使用 xcode 15 下的 cc，详细可访问如下链接
+    //
+    // https://github.com/dart-lang/sdk/issues/43299#issuecomment-2769408562
+    addSubcommand(OptimizeBuildXcToolchainCopyCommand());
+    addSubcommand(OptimizeBuildRedirectCCCommand());
+
     argParser
       ..addOption(
         'flutter',

@@ -4,5 +4,6 @@ export 'file.dart';
 export 'flutter.dart';
 export 'log.dart';
 export 'os.dart';
+export 'plist_buddy.dart';
 export 'process.dart';
 export 'yaml.dart';

@@ -10,9 +10,9 @@
       "type": "dart",
       "program": "${workspaceFolder}/bin/condor.dart",
       "args": [
-        // ====== optimize-build ======
-        "copilot",
-        "freedom",
+        // ====== copilot ======
+        // "copilot",
+        // "freedom",
         // ====== init ======
         // "init",
         // "-o",
@@ -35,11 +35,17 @@
         // "-f",
         // "fvm spawn 3.16.0",
         // ====== optimize-build ======
-        // "optimize-build",
+        "optimize-build",
         // "--flutter",
         // "fvm spawn 3.24.5",
         // "--config",
         // "path/to/rugby/plans.yml",
+        // "xctoolchain-copy",
+        // "--xcode",
+        // "Xcode-15.4.0",
+        "redirect-cc",
+        "--flutter",
+        "fvm spawn 3.29.0"
       ]
     }
   ]
