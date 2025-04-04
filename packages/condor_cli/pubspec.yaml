@@ -1,6 +1,6 @@
 name: condor_cli
 description: LinXunFeng的脚本工具集.
-version: 0.0.6
+version: 0.1.0
 repository: https://github.com/LinXunFeng/condor
 
 environment:
