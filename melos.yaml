@@ -1,0 +1,50 @@
+name: condor
+
+packages:
+  - packages/**
+
+command:
+  clean:
+    hooks:
+      post:
+        run: flutter clean
+        exec:
+          concurrency: 1
+        description: flutter clean
+
+scripts:
+  prepare:
+    exec: melos bs
+  upgrade:
+    run: dart pub upgrade
+    exec:
+      concurrency: 1
+    packageFilters:
+      flutter: false
+    description: dart pub upgrade
+
+  analyze:
+    exec: flutter analyze
+    description: flutter analyze
+
+  format:
+    run: dart format --set-exit-if-changed .
+    description: dart format --set-exit-if-changed .
+
+  publish:force:
+    run: dart pub publish -f
+    exec:
+      concurrency: 1
+      failFast: true
+    packageFilters:
+      scope:
+        - condor_cli
+
+  publish:dry:
+    run: dart pub publish --dry-run
+    exec:
+      concurrency: 1
+      failFast: true
+    packageFilters:
+      scope:
+        - condor_cli
