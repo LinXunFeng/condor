@@ -174,7 +174,7 @@ condor optimize-build xctoolchain-copy --xcode Xcode-15.4.0
 
 #### 重定向 `cc`
 
-这一步只是使 `flutter build` 具备重定向 `cc` 的能力而已，在有配置 `CONDOR_TOOLCHAINS` 环境变量时才会生效，否则则使用默认的 `cc`。
+这一步会对 `flutter_tools` 源码进行修改，使其具备重定向 `cc` 的能力而已，在有配置 `CONDOR_TOOLCHAINS` 环境变量时才会生效，否则则使用默认的 `cc`。
 
 ```shell
 # 使用默认 flutter，则不需要传 flutter 参数
