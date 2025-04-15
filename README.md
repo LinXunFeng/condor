@@ -162,6 +162,8 @@ condor optimize-build \
 
 ### 使用 `Xcode 15` 的工具链优化 `Xcode 16` 的编译
 
+> 文章：[Flutter - Xcode16 还原编译速度](https://mp.weixin.qq.com/s/sVouMFVe-eXoCFEofriasw)
+
 请先安装 `Xcode 16` 以下的版本，如: `Xcode 15.4.0`，建议使用 [XcodesApp](https://github.com/XcodesOrg/XcodesApp) 进行安装
 
 安装完成后，把对应的 `Xcode` 名字记下，如 `/Applications/Xcode-15.4.0.app`，则取 `Xcode-15.4.0`，给下面的命令使用。
