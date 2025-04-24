@@ -8,6 +8,12 @@
 
 ### Homebrew
 
+```shell
+brew install LinXunFeng/tap/condor
+````
+
+<!--
+
 首次安装
 
 ```shell
@@ -24,6 +30,7 @@ brew update && brew reinstall condor
 ```shell
 dart pub global activate condor_cli
 ```
+-->
 
 ## 使用
 
